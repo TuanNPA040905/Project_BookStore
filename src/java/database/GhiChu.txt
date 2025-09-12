@@ -1,0 +1,7 @@
+DAO: Data Access Object
+
+select: lấy tất cả các đối tượng 
+selectByID: lấy đối tượng theo id
+insert: thêm một đối tượng vào
+delete: xóa đi một đối tượng
+update: cập nhật đối tượng
