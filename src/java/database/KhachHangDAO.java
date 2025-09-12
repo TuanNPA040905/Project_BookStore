@@ -1,81 +1,72 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package database;
 
 import java.util.ArrayList;
+
 import model.KhachHang;
+import model.TheLoai;
 
-/**
- *
- * @author Admin
- */
-public class KhachHangDAO {
 
-    private ArrayList<KhachHang> data = new ArrayList<KhachHang>();
+public class KhachHangDAO implements DAOInterface<KhachHang>{
+	private ArrayList<KhachHang> data = new ArrayList<>();
+	
+	@Override
+	public ArrayList<KhachHang> selectAll() {
+		return this.data;
+	}
 
-    private ArrayList<KhachHang> selectAll() {
-        return data;
-    }
+	@Override
+	public KhachHang selectById(KhachHang t) {
+		for (KhachHang KhachHang : data) {
+			if(data.equals(t)) {
+				return KhachHang;
+			}
+		}
+		return null;
+	}
 
-    public KhachHang selectByID(String id) {
-        for (KhachHang khachHang : data) {
-            if (khachHang.getMaKhachHang().equals(id)) {
-                return khachHang;
-            }
-        }
-        return null;
-    }
+	@Override
+	public int insert(KhachHang t) {
+		if (this.selectById(t)==null) {
+			this.data.add(t);
+			return 1;
+		}
+		return 0;
+	}
 
-    public int insert(KhachHang khachHang) {
-        KhachHang kiemTraTonTai = this.selectByID(khachHang.getMaKhachHang());
-        if (kiemTraTonTai == null) {
-            data.add(khachHang);
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+	@Override
+	public int insertAll(ArrayList<KhachHang> arr) {
+		int dem = 0;
+		for (KhachHang KhachHang : arr) {
+			dem+=this.insert(KhachHang);
+		}
+		return dem;
+	}
 
-    public int insertAll(ArrayList<KhachHang> list) {
-        int dem = 0;
-        for (KhachHang khachHang : list) {
-            dem += this.insert(khachHang);
-        }
-        return dem;
-    }
+	@Override
+	public int delete(KhachHang t) {
+		if (this.selectById(t)!=null) {
+			this.data.remove(t);
+			return 1;
+		}
+		return 0;
+	}
 
-    public int delete(KhachHang khachHang) {
-        KhachHang kiemTraTonTai = this.selectByID(khachHang.getMaKhachHang());
-        if (kiemTraTonTai != null) {
-            data.remove(khachHang);
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+	@Override
+	public int deleteAll(ArrayList<KhachHang> arr) {
+		int dem = 0;
+		for (KhachHang KhachHang : arr) {
+			dem+=this.delete(KhachHang);
+		}
+		return dem;
+	}
 
-    public int deleteAll(ArrayList<KhachHang> list) {
-        int dem = 0;
-        for (KhachHang khachHang : list) {
-            KhachHang kiemTraTonTai = this.selectByID(khachHang.getMaKhachHang());
-            if (kiemTraTonTai != null) {
-                data.remove(khachHang);
-                dem++;
-            }
-        }
-        return dem;
-    }
-
-    public int update(KhachHang khachHang) {
-        KhachHang kiemTraTonTai = this.selectByID(khachHang.getMaKhachHang());
-        if (kiemTraTonTai != null) {
-            data.remove(kiemTraTonTai);
-            data.add(khachHang);
-            return 1;
-        } else {
-            return 0;
-        }
-    }
+	@Override
+	public int update(KhachHang t) {
+		if (this.selectById(t)!=null) {
+			this.data.remove(t);
+			this.data.add(t);
+			return 1;
+		}
+		return 0;
+	}
 }
