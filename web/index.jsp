@@ -3,11 +3,14 @@
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
 -->
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+
 <html>
     <head>
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <!-- JS Bundle (bao gồm Popper) -->
@@ -57,6 +60,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Tìm</button>
+                        <a class="btn btn-primary" style="white-space: nowrap; margin-left: 10px" href="regrister.jsp">
+                            Đăng ký
+                        </a>
                     </form>
                 </div>
             </div>

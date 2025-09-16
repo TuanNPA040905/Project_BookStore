@@ -20,7 +20,7 @@ public class KhachHang {
     private String diaChiNhanHang;
     private String diaChiMuaHang;
     private Date   ngaySinh;
-    private int soDienThoai;
+    private String soDienThoai;
     private String email;
     private boolean dkyNhanBanTinEmail;
 
@@ -28,7 +28,7 @@ public class KhachHang {
         
     }
 
-    public KhachHang(String maKhachHang, String tenDangNhap, String matKhau, String gioiTinh, String hoVaTen, String diaChi, String diaChiNhanHang, String diaChiMuaHang, Date ngaySinh, int soDienThoai, String email, boolean dkyNhanBanTinEmail) {
+    public KhachHang(String maKhachHang, String tenDangNhap, String matKhau, String gioiTinh, String hoVaTen, String diaChi, String diaChiNhanHang, String diaChiMuaHang, Date ngaySinh, String soDienThoai, String email, boolean dkyNhanBanTinEmail) {
         this.maKhachHang = maKhachHang;
         this.tenDangNhap = tenDangNhap;
         this.matKhau = matKhau;
@@ -115,11 +115,11 @@ public class KhachHang {
         this.ngaySinh = ngaySinh;
     }
 
-    public int getSoDienThoai() {
+    public String getSoDienThoai() {
         return soDienThoai;
     }
 
-    public void setSoDienThoai(int soDienThoai) {
+    public void setSoDienThoai(String soDienThoai) {
         this.soDienThoai = soDienThoai;
     }
 

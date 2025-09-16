@@ -56,3 +56,21 @@
     + Giá bán
     + Thuế VAT
     + Tổng thành tiền
+
+
+
+
+User:
+    + Khách hàng:
+        - Đăng ký tài khoản
+        - Đăng nhập
+        - Xem sản phẩm
+        - Tìm kiếm sản phẩm
+        - Thêm sản phẩm vào giỏ hàng
+        - Các bước thanh toán
+        - Thay đổi thông tin/ đổi mật khẩu
+        - Xem lại đơn hàng cũ
+
+    + Quản trị:
+        - 
+    + Nhân viên:

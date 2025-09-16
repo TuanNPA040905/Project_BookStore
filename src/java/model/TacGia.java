@@ -13,7 +13,7 @@ import java.util.Objects;
  */
 public class TacGia {
     private String maTacGia;
-    private String tenTacGia;
+    private String hoVaTen;
     private Date ngaySinh;
     private String tieuSu;
 
@@ -22,7 +22,7 @@ public class TacGia {
 
     public TacGia(String maTacGia, String tenTacGia, Date ngaySinh, String tieuSu) {
         this.maTacGia = maTacGia;
-        this.tenTacGia = tenTacGia;
+        this.hoVaTen = tenTacGia;
         this.ngaySinh = ngaySinh;
         this.tieuSu = tieuSu;
     }
@@ -35,13 +35,16 @@ public class TacGia {
         this.maTacGia = maTacGia;
     }
 
-    public String getTenTacGia() {
-        return tenTacGia;
+    public String getHoVaTen() {
+        return hoVaTen;
     }
 
-    public void setTenTacGia(String tenTacGia) {
-        this.tenTacGia = tenTacGia;
+    public void setHoVaTen(String hoVaTen) {
+        this.hoVaTen = hoVaTen;
     }
+
+
+
 
     public Date getNgaySinh() {
         return ngaySinh;
@@ -59,6 +62,13 @@ public class TacGia {
         this.tieuSu = tieuSu;
     }
 
+    @Override
+    public String toString() {
+        return "TacGia{" + "maTacGia=" + maTacGia + ", tenTacGia=" + hoVaTen + ", ngaySinh=" + ngaySinh + ", tieuSu=" + tieuSu + '}';
+    }
+    
+    
+
 
     @Override
     public boolean equals(Object obj) {
@@ -75,7 +85,7 @@ public class TacGia {
         if (!Objects.equals(this.maTacGia, other.maTacGia)) {
             return false;
         }
-        if (!Objects.equals(this.tenTacGia, other.tenTacGia)) {
+        if (!Objects.equals(this.hoVaTen, other.hoVaTen)) {
             return false;
         }
         if (!Objects.equals(this.tieuSu, other.tieuSu)) {
