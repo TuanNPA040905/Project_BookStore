@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Util.MaHoa;
 import database.KhachHangDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -40,7 +41,7 @@ public class DangNhap extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet DangNhap</title>");            
+            out.println("<title>Servlet DangNhap</title>");
             out.println("</head>");
             out.println("<body>");
             out.println("<h1>Servlet DangNhap at " + request.getContextPath() + "</h1>");
@@ -76,16 +77,17 @@ public class DangNhap extends HttpServlet {
             throws ServletException, IOException {
         String username = request.getParameter("tenDangNhap");
         String password = request.getParameter("matKhau");
+        password = MaHoa.toSHA1(password); //chuyển đổi từ mật khẩu sang mã hóa
         
         KhachHang kh = new KhachHang();
         kh.setTenDangNhap(username);
         kh.setMatKhau(password);
-        
+
         KhachHangDAO khd = new KhachHangDAO();
         KhachHang khachHang = khd.selectByUsernameAndPassword(kh);
         String url = "";
-        if(khachHang != null) {
-            HttpSession session =  request.getSession();
+        if (khachHang != null) {
+            HttpSession session = request.getSession();
             session.setAttribute("khachHang", khachHang);
             url = "/index.jsp";
         } else {

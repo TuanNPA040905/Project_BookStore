@@ -4,6 +4,7 @@
  */
 package controller;
 
+import Util.MaHoa;
 import database.KhachHangDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -116,6 +117,8 @@ public class Register extends HttpServlet {
 
         if (!matKhau.equals(matKhauNhapLai)) {
             baoLoi += "Mật khẩu không khớp.</br>";
+        } else {
+            matKhau = MaHoa.toSHA1(matKhau);
         }
 
         if (baoLoi.length() > 0) {
@@ -126,6 +129,7 @@ public class Register extends HttpServlet {
             String maKhachHang = System.currentTimeMillis() + rd.nextInt(1000) + "";
             KhachHang kh = new KhachHang(maKhachHang, tenDangNhap, matKhau, hoVaTen, gioiTinh, diaChiKhachHang, diaChiNhanHang, diaChiMuaHang, Date.valueOf(ngaySinh), dienThoai, email, dongYNhanTB != null);
             khachHangDAO.insert(kh);
+            request.getSession().setAttribute("khachHang", kh); // lưu người dùng vừa đăng ký vào session, giúp duy trì trạng thái và truyền qua những trang khác
             url = "/thanhcong.jsp";
 
         }
