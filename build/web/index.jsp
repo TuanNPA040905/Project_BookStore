@@ -1,3 +1,4 @@
+<%@page import="model.KhachHang"%>
 <!DOCTYPE html>
 <!--
 Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
@@ -60,9 +61,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                     <form class="d-flex" role="search">
                         <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm" aria-label="Search">
                         <button class="btn btn-outline-success" type="submit">Tìm</button>
-                        <a class="btn btn-primary" style="white-space: nowrap; margin-left: 10px" href="regrister.jsp">
-                            Đăng ký
+                        <%
+                            Object obj = session.getAttribute("khachHang");
+                            KhachHang khachHang = null;
+                            if (obj != null) {
+                                khachHang = (KhachHang) obj;
+                            }
+                            if (khachHang == null) {
+
+                        %>
+                        <a class="btn btn-primary" style="white-space: nowrap; margin-left: 10px" href="dangnhap.jsp">
+                            Đăng Nhập
                         </a>
+                        <%} else {%>
+                        <div class="dang-nhap" style="margin-left: 10px">
+                            <a style="white-space: nowrap;" >
+                                Xin chào <b><%=khachHang.getTenDangNhap()%></b> <br/>
+                            </a>
+                            <a class="btn btn-primary" style="white-space: nowrap" href = "dang-xuat">
+                                Đăng xuất
+                            </a>
+                        </div>
+                        <%    }%>
                     </form>
                 </div>
             </div>
