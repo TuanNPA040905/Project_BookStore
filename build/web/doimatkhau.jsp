@@ -57,10 +57,11 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Lưu mật khẩu</button>
             </form>
+            <% }%>
+            <% if (request.getAttribute("showHomeLink") != null) { %>
+            <a href="index.jsp">Quay trở lại trang chủ</a>
+            <% }%>
         </div>
-        <% }%>
-        <% if (request.getAttribute("showHomeLink") != null) { %>
-        <a href="index.jsp">Quay trở lại trang chủ</a>
-        <% }%>
+
     </body>
 </html>

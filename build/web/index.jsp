@@ -81,7 +81,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" href="#">Đơn hàng của tôi</a></li>
                                     <li><a class="dropdown-item" href="#">Thông báo</a></li>
-                                    <li><a class="dropdown-item" href="#">Thay đổi thông tin</a></li>
+                                    <li><a class="dropdown-item" href="thaydoithongtin.jsp">Thay đổi thông tin</a></li>
                                     <li><a class="dropdown-item" href="doimatkhau.jsp">Đổi mật khẩu</a></li>
                                     <li><hr class="dropdown-divider"></li>
                                     <li><a class="dropdown-item" href="dang-xuat">Thoát tài khoản</a></li>

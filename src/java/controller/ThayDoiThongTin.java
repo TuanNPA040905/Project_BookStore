@@ -4,12 +4,10 @@
  */
 package controller;
 
-import Util.MaHoa;
 import database.KhachHangDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Date;
-import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,8 +20,8 @@ import model.KhachHang;
  *
  * @author Admin
  */
-@WebServlet(name = "Register", urlPatterns = {"/do-regrister"})
-public class Register extends HttpServlet {
+@WebServlet(name = "ThayDoiThongTin", urlPatterns = {"/thay-doi-thong-tin"})
+public class ThayDoiThongTin extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,10 +40,10 @@ public class Register extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet Register</title>");
+            out.println("<title>Servlet ThayDoiThongTin</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet Register at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ThayDoiThongTin at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -63,11 +61,7 @@ public class Register extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setContentType("text/html; charset=UTF-8");
-
-        RequestDispatcher rd = request.getRequestDispatcher("/regrister.jsp");
-        rd.forward(request, response);
+        processRequest(request, response);
     }
 
     /**
@@ -83,10 +77,6 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
         response.setContentType("text/html; charset=UTF-8");
-
-        String tenDangNhap = request.getParameter("tenDangNhap");
-        String matKhau = request.getParameter("matKhau");
-        String matKhauNhapLai = request.getParameter("matKhauNhapLai");
         String hoVaTen = request.getParameter("hoVaTen");
         String gioiTinh = request.getParameter("gioiTinh");
         String ngaySinh = request.getParameter("ngaySinh");
@@ -95,9 +85,7 @@ public class Register extends HttpServlet {
         String diaChiNhanHang = request.getParameter("diaChiNhanHang");
         String dienThoai = request.getParameter("dienThoai");
         String email = request.getParameter("email");
-        String dongYNhanTB = request.getParameter("dongYNhanTB");
-
-        request.setAttribute("tenDangNhap", tenDangNhap);
+        String dongYNhanMail = request.getParameter("dongYNhanMail");
         request.setAttribute("hoVaTen", hoVaTen);
         request.setAttribute("gioiTinh", gioiTinh);
         request.setAttribute("ngaySinh", ngaySinh);
@@ -105,32 +93,31 @@ public class Register extends HttpServlet {
         request.setAttribute("diaChiMuaHang", diaChiMuaHang);
         request.setAttribute("diaChiNhanHang", diaChiNhanHang);
         request.setAttribute("dienThoai", dienThoai);
-        request.setAttribute("email", email);
-        request.setAttribute("dongYNhanTB", dongYNhanTB);
+        request.setAttribute("dongYNhanMail", dongYNhanMail);
+
+        String url = "";
 
         String baoLoi = "";
         KhachHangDAO khachHangDAO = new KhachHangDAO();
-        String url = "";
-        if (khachHangDAO.kiemTraTenDangNhap(tenDangNhap)) {
-            baoLoi += "Tên đăng nhập đã tồn tại! Vui lòng chọn tên đăng nhập khác.</br>";
-        }
 
-        if (!matKhau.equals(matKhauNhapLai)) {
-            baoLoi += "Mật khẩu không khớp.</br>";
-        } else {
-            matKhau = MaHoa.toSHA1(matKhau);
-        }
+        request.setAttribute("baoLoi", baoLoi);
 
         if (baoLoi.length() > 0) {
-            request.setAttribute("baoLoi", baoLoi);
-            url = "/regrister.jsp";
+            url = "/dangky.jsp";
         } else {
-            Random rd = new Random();
-            String maKhachHang = System.currentTimeMillis() + rd.nextInt(1000) + "";
-            KhachHang kh = new KhachHang(maKhachHang, tenDangNhap, matKhau, gioiTinh, hoVaTen, diaChiKhachHang, diaChiNhanHang, diaChiMuaHang, Date.valueOf(ngaySinh), dienThoai, email, dongYNhanTB != null);
-            khachHangDAO.insert(kh);
-            request.getSession().setAttribute("khachHang", kh); // lưu người dùng vừa đăng ký vào session, giúp duy trì trạng thái và truyền qua những trang khác
-            url = "/thanhcong.jsp";
+            Object obj = request.getSession().getAttribute("khachHang");
+            KhachHang khachHang = null;
+            if (obj != null) {
+                khachHang = (KhachHang) obj;
+            }
+            if (khachHang != null) {
+                String maKhachHang = khachHang.getMaKhachHang();
+                KhachHang kh = new KhachHang(maKhachHang, "", "", gioiTinh, hoVaTen, diaChiKhachHang, diaChiNhanHang, diaChiMuaHang, Date.valueOf(ngaySinh), dienThoai, email, dongYNhanMail != null);
+                khachHangDAO.updateInfo(kh);
+                KhachHang kh2 = khachHangDAO.selectById(kh);
+                request.getSession().setAttribute("khachHang", kh2);
+                url = "/thanhcong.jsp";
+            }
 
         }
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
