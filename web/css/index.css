@@ -1,0 +1,50 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Sep 26, 2025, 8:19:51 AM
+    Author     : Admin
+*/
+
+.list-item ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+
+.list-item ul li {
+    list-style-type: none;
+}
+
+.list-item ul li a {
+    text-decoration: none;
+}
+
+.carousell {
+    margin: 0 auto;
+}
+
+.title-content {
+    text-align: center;
+    margin-bottom: 20px;
+    color: brown;
+}
+.product-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 2%;
+}
+
+.card-body del {
+    color: #c0c0c0;
+    font-size: 17px;
+    margin-left: 5px;
+}
+
+.card-body h5 {
+    color: red;
+}

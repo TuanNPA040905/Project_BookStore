@@ -1,63 +1,47 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
-import java.sql.Date;
-
-/**
- *
- * @author Admin
- */
 public class ChiTietDonHang {
-    private String maChiTietDonHang;
-    private DonHang donHang;
-    private SanPham sanPham;
+    private int maChiTiet;
+    private String maDonHang;
+    private String maSanPham;
     private int soLuong;
-    private double giaBia;
-    private double giamGia;
-    private double giaBan;
-    private double VAT;
-    private double tongThanhTien;
+    private double gia;
+    private String tenSanPham; // để hiển thị
 
     public ChiTietDonHang() {
     }
 
-    public ChiTietDonHang(String maChiTietDonHang, DonHang donHang, SanPham sanPham, int soLuong, double giaBia, double giamGia, double giaBan, double VAT, double tongThanhTien) {
-        this.maChiTietDonHang = maChiTietDonHang;
-        this.donHang = donHang;
-        this.sanPham = sanPham;
+    public ChiTietDonHang(int maChiTiet, String maDonHang, String maSanPham, int soLuong, double gia, String tenSanPham) {
+        this.maChiTiet = maChiTiet;
+        this.maDonHang = maDonHang;
+        this.maSanPham = maSanPham;
         this.soLuong = soLuong;
-        this.giaBia = giaBia;
-        this.giamGia = giamGia;
-        this.giaBan = giaBan;
-        this.VAT = VAT;
-        this.tongThanhTien = tongThanhTien;
+        this.gia = gia;
+        this.tenSanPham = tenSanPham;
     }
 
-    public String getMaChiTietDonHang() {
-        return maChiTietDonHang;
+    public int getMaChiTiet() {
+        return maChiTiet;
     }
 
-    public void setMaChiTietDonHang(String maChiTietDonHang) {
-        this.maChiTietDonHang = maChiTietDonHang;
+    public void setMaChiTiet(int maChiTiet) {
+        this.maChiTiet = maChiTiet;
     }
 
-    public DonHang getDonHang() {
-        return donHang;
+    public String getMaDonHang() {
+        return maDonHang;
     }
 
-    public void setDonHang(DonHang donHang) {
-        this.donHang = donHang;
+    public void setMaDonHang(String maDonHang) {
+        this.maDonHang = maDonHang;
     }
 
-    public SanPham getSanPham() {
-        return sanPham;
+    public String getMaSanPham() {
+        return maSanPham;
     }
 
-    public void setSanPham(SanPham sanPham) {
-        this.sanPham = sanPham;
+    public void setMaSanPham(String maSanPham) {
+        this.maSanPham = maSanPham;
     }
 
     public int getSoLuong() {
@@ -68,45 +52,22 @@ public class ChiTietDonHang {
         this.soLuong = soLuong;
     }
 
-    public double getGiaBia() {
-        return giaBia;
+    public double getGia() {
+        return gia;
     }
 
-    public void setGiaBia(double giaBia) {
-        this.giaBia = giaBia;
+    public void setGia(double gia) {
+        this.gia = gia;
     }
 
-    public double getGiamGia() {
-        return giamGia;
+    public String getTenSanPham() {
+        return tenSanPham;
     }
 
-    public void setGiamGia(double giamGia) {
-        this.giamGia = giamGia;
+    public void setTenSanPham(String tenSanPham) {
+        this.tenSanPham = tenSanPham;
     }
-
-    public double getGiaBan() {
-        return giaBan;
-    }
-
-    public void setGiaBan(double giaBan) {
-        this.giaBan = giaBan;
-    }
-
-    public double getVAT() {
-        return VAT;
-    }
-
-    public void setVAT(double VAT) {
-        this.VAT = VAT;
-    }
-
-    public double getTongThanhTien() {
-        return tongThanhTien;
-    }
-
-    public void setTongThanhTien(double tongThanhTien) {
-        this.tongThanhTien = tongThanhTien;
-    }
+    
     
     
 }

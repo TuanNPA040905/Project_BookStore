@@ -16,102 +16,33 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
 
         <!-- JS Bundle (bao gồm Popper) -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+        <link rel="stylesheet" href="./css/index.css"/>
     </head>
     <body>
-        <!-- Navbar -->
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">
-                    <img src="https://upload.wikimedia.org/wikipedia/sco/thumb/d/d3/Starbucks_Corporation_Logo_2011.svg/2034px-Starbucks_Corporation_Logo_2011.svg.png" 
-                         alt="logo" width="50">
+        <!-- header -->
 
-                </a>
-
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                        data-bs-target="#navbarSupportedContent" 
-                        aria-controls="navbarSupportedContent" aria-expanded="false" 
-                        aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Trang chủ</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Sale mạnh</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" 
-                               data-bs-toggle="dropdown" aria-expanded="false">
-                                Thể loại
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="#">Quần jeans</a></li>
-                                <li><a class="dropdown-item" href="#">Đồ Set</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#">Vest</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled" aria-disabled="true">Hết hàng</a>
-                        </li>
-                    </ul>
-                    <form class="d-flex" role="search">
-                        <input class="form-control me-2" type="search" placeholder="Nội dung tìm kiếm" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Tìm</button>
-                        <%
-                            Object obj = session.getAttribute("khachHang");
-                            KhachHang khachHang = null;
-                            if (obj != null) {
-                                khachHang = (KhachHang) obj;
-                            }
-                            if (khachHang == null) {
-
-                        %>
-                        <a class="btn btn-primary" style="white-space: nowrap; margin-left: 10px" href="dangnhap.jsp">
-                            Đăng Nhập
-                        </a>
-                        <%} else {%>
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 bg-infor ">
-                            <li class="nav-item dropdown dropstart"><a
-                                    class="nav-link dropdown-toggle" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-expanded="false"> Tài khoản</a>
-                                <ul class="dropdown-menu">
-                                    <li><a class="dropdown-item" href="#">Đơn hàng của tôi</a></li>
-                                    <li><a class="dropdown-item" href="#">Thông báo</a></li>
-                                    <li><a class="dropdown-item" href="thaydoithongtin.jsp">Thay đổi thông tin</a></li>
-                                    <li><a class="dropdown-item" href="doimatkhau.jsp">Đổi mật khẩu</a></li>
-                                    <li><hr class="dropdown-divider"></li>
-                                    <li><a class="dropdown-item" href="dang-xuat">Thoát tài khoản</a></li>
-                                </ul></li>
-                        </ul>		
-                        <%    }%>
-                    </form>
-                </div>
-            </div>
-        </nav>
-        <!--End Navbar-->
-
+        <jsp:include page="header.jsp"/>
         <!--Page Content-->
         <div class="container-fluid">
             <div class="row">
                 <!--menu-->
 
-                <div class="col-lg-3">
-                    <div class="list-group">
-                        <a href="#" class="list-group-item list-group-item-action" aria-current="true">
-                            Thời trang nam
-                        </a>
-                        <a href="#" class="list-group-item list-group-item-action">Thời trang nữ</a>
-                        <a href="#" class="list-group-item list-group-item-action">Dành cho bé</a>
+                <div class="col-12">
+                    <div class="list-item">
+                        <ul>
+                            <li><a>Hàng mới</a></li>
+                            <li><a>Sản phẩm mới</a></li>
+                            <li><a>Áo nam</a></li>
+                            <li><a>Quần nam</a></li>
+                            <li><a>Phụ kiện</a></li>
+                            <li><a>Jeans</a></li>
+                        </ul>
                     </div>
                 </div>
                 <!--end menu-->
                 <!--slider and product-->
 
-                <div class="col-lg-9">
+                <div class="col-lg-10 carousell">
                     <div id="carouselExample" class="carousel slide">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
@@ -137,40 +68,75 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit thi
                 <!--end slider-->
 
             </div>
-            <div class="row" style="margin-top: 100px">
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img src="https://product.hstatic.net/1000333436/product/av348_f38d712d83484212b0223b1c76b1816f_master.jpg" class="card-img-top" alt="..." style="width: 100%">
+
+            <div class="row " style="margin-top: 100px">
+                <h2 class="title-content">Best Sellers</h2>
+                <div class="product-list col-md-10">
+                    <div class="card" style="width: 18rem;">
+                        <img src="./img/img_item/best-s.jpg" class="card-img-top" alt="">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title">296,000đ<del>349,000đ</del></h5>
+                            <p class="card-text">Áo Khoác Nam Xỏ Ngón Chống Nắng ICONDENIM UltraShade</p>
+                            <form action="dat-hang" method="post" style="display: inline;">
+                                <input type="hidden" name="maSanPham" value="SP001">
+                                <input type="hidden" name="soLuong" value="1">
+                                <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                            </form>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card" >
-                        <img src="https://product.hstatic.net/1000333436/product/av348_f38d712d83484212b0223b1c76b1816f_master.jpg" class="card-img-top" alt="..." style="width: 100%">
+                    </div><div class="card" style="width: 18rem;">
+                        <img src="./img/img_item/best-s1.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title">509,000đ<del>599,000đ</del></h5>
+                            <p class="card-text">Áo Khoác Nam Denim ICONDENIM Vintage Wash Form Loose</p>
+                            <form action="dat-hang" method="post" style="display: inline;">
+                                <input type="hidden" name="maSanPham" value="SP001">
+                                <input type="hidden" name="soLuong" value="1">
+                                <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                            </form>
                         </div>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="card">
-                        <img src="https://product.hstatic.net/1000333436/product/av348_f38d712d83484212b0223b1c76b1816f_master.jpg" class="card-img-top" alt="..." style="width: 100%">
+                    </div><div class="card" style="width: 18rem;">
+                        <img src="./img/img_item/best-s2.jpg" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title">551,000đ<del>649,000đ</del></h5>
+                            <p class="card-text">Áo Khoác Jean Nam ICONDENIM Moss Sage Tint Wash Form Loose</p>
+                            <form action="dat-hang" method="post" style="display: inline;">
+                                <input type="hidden" name="maSanPham" value="SP001">
+                                <input type="hidden" name="soLuong" value="1">
+                                <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                            </form>
+                        </div>
+                    </div><div class="card" style="width: 18rem;">
+                        <img src="./img/img_item/best-s3.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">424,000đ<del>499,000đ</del></h5>
+                            <p class="card-text">Áo Khoác Gió Nam ICONDENIM Sonic Airflow Form Regular</p>
+                            <form action="dat-hang" method="post" style="display: inline;">
+                                <input type="hidden" name="maSanPham" value="SP001">
+                                <input type="hidden" name="soLuong" value="1">
+                                <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                            </form>
+                        </div>
+                    </div><div class="card" style="width: 18rem;">
+                        <img src="./img/img_item/best-s4.jpg" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">382,000đ<del>449,000đ</del></h5>
+                            <p class="card-text">Áo Khoác Nam ICONDENIM Flex Pocketable</p>
+                            <form action="dat-hang" method="post" style="display: inline;">
+                                <input type="hidden" name="maSanPham" value="SP001">
+                                <input type="hidden" name="soLuong" value="1">
+                                <button type="submit" class="btn btn-primary">Đặt hàng</button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!--End Page Content-->
+
+        <!--footer-->
+        <%@include file="footer.jsp" %>
+
+
     </body>
 </html>
 

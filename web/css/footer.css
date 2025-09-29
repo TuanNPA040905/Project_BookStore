@@ -1,0 +1,17 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Sep 25, 2025, 10:26:18 PM
+    Author     : Admin
+*/
+
+.footer {
+    background-color: #2B3035;
+    width: 100%;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}

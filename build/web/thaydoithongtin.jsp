@@ -31,6 +31,7 @@
     </head>
 
     <body>
+        <jsp:include page="header.jsp"/>
         <%
             Object obj = session.getAttribute("khachHang");
             KhachHang khachHang = null;

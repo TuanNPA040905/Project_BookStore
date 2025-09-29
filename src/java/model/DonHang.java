@@ -1,142 +1,82 @@
 package model;
 
-import java.sql.Date;
-import java.util.Objects;
+import java.util.Date;
+import java.util.List;
 
 public class DonHang {
-	private String maDonHang;
-	private KhachHang khachHang;
-	private String diaChiMuaHang;
-	private String diaChiNhanHang;
-	private String trangThai;
-	private String hinhThucThanhToan; 
-	private String trangThaiThanhToan;
-	private double soTienDaThanhToan;
-	private double soTienConThieu;
-	private Date ngayDatHang;
-	private Date ngayGiaoHang;
-	
-	public DonHang(String maDH, KhachHang khachHang1, String diaChiNguoiMua, String diaChiNhanHang1, String trangThai1, String hinhThucThanhToan1, double soTienDaThanhToan1, double soTienConThieu1, Date ngayDatHang1, Date ngayGiaoHang1) {
-	}
+    private int maDonHang;
+    private String maKhachHang;
+    private Date ngayDatHang;
+    private double tongTien;
+    private String trangThai;
+    private String diaChiGiaoHang;
+    private List<ChiTietDonHang> chiTietDonHang;
+    
+    // Constructors
+    public DonHang() {}
+    
+    public DonHang(String maKhachHang, double tongTien, String diaChiGiaoHang) {
+        this.maKhachHang = maKhachHang;
+        this.tongTien = tongTien;
+        this.diaChiGiaoHang = diaChiGiaoHang;
+        this.trangThai = "pending";
+    }
+    
+    
 
-	public DonHang(String maDonHang, KhachHang khachHang, String diaChiMuaHang, String diaChiNhanHang, String trangThai,
-			String hinhThucThanhToan, String trangThaiThanhToan, double soTienDaThanhToan, double soTienConThieu,
-			Date ngayDatHang, Date ngayGiaoHang) {
-		this.maDonHang = maDonHang;
-		this.khachHang = khachHang;
-		this.diaChiMuaHang = diaChiMuaHang;
-		this.diaChiNhanHang = diaChiNhanHang;
-		this.trangThai = trangThai;
-		this.hinhThucThanhToan = hinhThucThanhToan;
-		this.trangThaiThanhToan = trangThaiThanhToan;
-		this.soTienDaThanhToan = soTienDaThanhToan;
-		this.soTienConThieu = soTienConThieu;
-		this.ngayDatHang = ngayDatHang;
-		this.ngayGiaoHang = ngayGiaoHang;
-	}
+    public int getMaDonHang() {
+        return maDonHang;
+    }
 
-	public String getMaDonHang() {
-		return maDonHang;
-	}
+    public void setMaDonHang(int maDonHang) {
+        this.maDonHang = maDonHang;
+    }
 
-	public void setMaDonHang(String maDonHang) {
-		this.maDonHang = maDonHang;
-	}
+    public String getMaKhachHang() {
+        return maKhachHang;
+    }
 
-	public KhachHang getKhachHang() {
-		return khachHang;
-	}
+    public void setMaKhachHang(String maKhachHang) {
+        this.maKhachHang = maKhachHang;
+    }
 
-	public void setKhachHang(KhachHang khachHang) {
-		this.khachHang = khachHang;
-	}
+    public Date getNgayDatHang() {
+        return ngayDatHang;
+    }
 
-	public String getDiaChiMuaHang() {
-		return diaChiMuaHang;
-	}
+    public void setNgayDatHang(Date ngayDatHang) {
+        this.ngayDatHang = ngayDatHang;
+    }
 
-	public void setDiaChiMuaHang(String diaChiMuaHang) {
-		this.diaChiMuaHang = diaChiMuaHang;
-	}
+    public double getTongTien() {
+        return tongTien;
+    }
 
-	public String getDiaChiNhanHang() {
-		return diaChiNhanHang;
-	}
+    public void setTongTien(double tongTien) {
+        this.tongTien = tongTien;
+    }
 
-	public void setDiaChiNhanHang(String diaChiNhanHang) {
-		this.diaChiNhanHang = diaChiNhanHang;
-	}
+    public String getTrangThai() {
+        return trangThai;
+    }
 
-	public String getTrangThai() {
-		return trangThai;
-	}
+    public void setTrangThai(String trangThai) {
+        this.trangThai = trangThai;
+    }
 
-	public void setTrangThai(String trangThai) {
-		this.trangThai = trangThai;
-	}
+    public String getDiaChiGiaoHang() {
+        return diaChiGiaoHang;
+    }
 
-	public String getHinhThucThanhToan() {
-		return hinhThucThanhToan;
-	}
+    public void setDiaChiGiaoHang(String diaChiGiaoHang) {
+        this.diaChiGiaoHang = diaChiGiaoHang;
+    }
 
-	public void setHinhThucThanhToan(String hinhThucThanhToan) {
-		this.hinhThucThanhToan = hinhThucThanhToan;
-	}
+    public List<ChiTietDonHang> getChiTietDonHang() {
+        return chiTietDonHang;
+    }
 
-	public String getTrangThaiThanhToan() {
-		return trangThaiThanhToan;
-	}
-
-	public void setTrangThaiThanhToan(String trangThaiThanhToan) {
-		this.trangThaiThanhToan = trangThaiThanhToan;
-	}
-
-	public double getSoTienDaThanhToan() {
-		return soTienDaThanhToan;
-	}
-
-	public void setSoTienDaThanhToan(double soTienDaThanhToan) {
-		this.soTienDaThanhToan = soTienDaThanhToan;
-	}
-
-	public double getSoTienConThieu() {
-		return soTienConThieu;
-	}
-
-	public void setSoTienConThieu(double soTienConThieu) {
-		this.soTienConThieu = soTienConThieu;
-	}
-
-	public Date getNgayDatHang() {
-		return ngayDatHang;
-	}
-
-	public void setNgayDatHang(Date ngayDatHang) {
-		this.ngayDatHang = ngayDatHang;
-	}
-
-	public Date getNgayGiaoHang() {
-		return ngayGiaoHang;
-	}
-
-	public void setNgayGiaoHang(Date ngayGiaoHang) {
-		this.ngayGiaoHang = ngayGiaoHang;
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(maDonHang);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		DonHang other = (DonHang) obj;
-		return Objects.equals(maDonHang, other.maDonHang);
-	}
+    public void setChiTietDonHang(List<ChiTietDonHang> chiTietDonHang) {
+        this.chiTietDonHang = chiTietDonHang;
+    }
 }

@@ -61,8 +61,8 @@ public class SanPhamDAO implements DAOInterface<SanPham> {
 		return ketQua;
 	}
 
-	@Override
-	public SanPham selectById(SanPham t) {
+	
+	public SanPham selectById(String id) {
 
 		SanPham ketQua = null;
 		try {
@@ -70,7 +70,7 @@ public class SanPhamDAO implements DAOInterface<SanPham> {
 
 			String sql = "SELECT * FROM sanpham WHERE masanpham=?";
 			PreparedStatement st = con.prepareStatement(sql);
-			st.setString(1, t.getMaSanPham());
+			st.setString(1, id);
 
 			ResultSet rs = st.executeQuery();
 			while (rs.next()) {
@@ -235,4 +235,9 @@ public class SanPhamDAO implements DAOInterface<SanPham> {
 
 		return ketQua;
 	}
+
+    @Override
+    public SanPham selectById(SanPham t) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

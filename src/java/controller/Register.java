@@ -117,6 +117,8 @@ public class Register extends HttpServlet {
 
         if (!matKhau.equals(matKhauNhapLai)) {
             baoLoi += "Mật khẩu không khớp.</br>";
+        } else if (!isStrongPassword(matKhau)) {
+            baoLoi += "Mật khẩu phải ≥ 8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt.</br>";
         } else {
             matKhau = MaHoa.toSHA1(matKhau);
         }
@@ -135,6 +137,12 @@ public class Register extends HttpServlet {
         }
         RequestDispatcher rd = getServletContext().getRequestDispatcher(url);
         rd.forward(request, response);
+    }
+
+    private boolean isStrongPassword(String password) {
+        // ít nhất 8 ký tự, có chữ hoa, chữ thường, số và ký tự đặc biệt
+        String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        return password.matches(regex);
     }
 
     /**
